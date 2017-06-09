@@ -5,7 +5,9 @@ PROGRAM sort
 
    IMPLICIT NONE !Todas as variáveis terão seus tipos definidos de modo explicito obrigatoriamente
 
-   INTEGER, EXTERNAL :: insertionsort !Função que faz a ordenação
+   REAL, EXTERNAL :: insertionsort !Função que faz a ordenação
+
+   NONE, EXTERNAL :: exibevetor
 
    !INTEGER sorted(100)
    REAL, DIMENSION(100) :: sorted
@@ -26,7 +28,9 @@ PROGRAM sort
 END PROGRAM sort
 
 FUNCTION insertionsort(sorted, tam)
-
+   REAL, DIMENSION(100) :: sorted
+   REAL, DIMENSION(100) :: insertionsort
+   INTEGER TAM
    INTEGER i, j
    REAL aux
    i = 0
@@ -35,7 +39,7 @@ FUNCTION insertionsort(sorted, tam)
 
    DO WHILE (j < (tam-1))
       DO WHILE (i < (tam-j+1))
-         IF(sorted(i) > sorted(i+1))
+         IF(sorted(i) > sorted(i+1)) THEN
             aux = sorted(i+1)
             sorted(i+1) = sorted(i)
             sorted(i) = aux
@@ -45,10 +49,13 @@ FUNCTION insertionsort(sorted, tam)
       j = j +1
    END DO
 
-END FUNCTION sorted
+   insertionsort = sorted
+END FUNCTION insertionsort
 
 
 FUNCTION exibevetor(sorted, tam)
+   !REAL, DIMENSION(100) :: sorted
+   !INTEGER TAM
    INTEGER i
    i = 0
 
@@ -56,5 +63,5 @@ FUNCTION exibevetor(sorted, tam)
       print *, sorted(i)
       i = i +1
    END DO
-
-END FUNCTION
+   
+END FUNCTION 
