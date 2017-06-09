@@ -1,62 +1,60 @@
 
-C     Objetivo do exercício: Implementar o InsertSort
+!Objetivo do exercício: Implementar o InsertSort
+
+PROGRAM sort 
+
+   IMPLICIT NONE !Todas as variáveis terão seus tipos definidos de modo explicito obrigatoriamente
+
+   INTEGER, EXTERNAL :: insertionsort !Função que faz a ordenação
+
+   !INTEGER sorted(100)
+   REAL, DIMENSION(100) :: sorted
+   INTEGER i
+   i = 0
+
+   !CALL RANDOM_SEED(1000) !dúvidas em relação ao parametro passado
+     
+	DO WHILE(i < 100)
+      CALL RANDOM_NUMBER(sorted(i))
+   	i = i + 1
+	END DO
+
+	sorted = insertionsort(sorted, 100)
+
+	exibevetor(sorted, 100)
+
+END PROGRAM sort
+
+FUNCTION insertionsort(sorted, tam)
+
+   INTEGER i, j
+   REAL aux
+   i = 0
+   j = 0
+   aux = 0
+
+   DO WHILE (j < (tam-1))
+      DO WHILE (i < (tam-j+1))
+         IF(sorted(i) > sorted(i+1))
+            aux = sorted(i+1)
+            sorted(i+1) = sorted(i)
+            sorted(i) = aux
+         END IF
+         i = i+1
+      END DO
+      j = j +1
+   END DO
+
+END FUNCTION sorted
 
 
-      program Sort
-      implicit none
+FUNCTION exibevetor(sorted, tam)
+   INTEGER i
+   i = 0
 
-      dimension sorted(100)
+   DO WHILE (i<100)
+      print *, sorted(i)
+      i = i +1
+   END DO
 
-      call random_seed(1000)
-      integer i/1/
-		do while (i<101)
-   			call random_number(sorted(i))
-   			i = i + 1
-		end do
-
-		call InsertionSort(sorted, 100)
-
-		call ExibeVetor(sorted, 100)
-
-C-----------------------------------------------------------------------
-      subroutine InsertionSort(v, tam)
-      implicit none
-
-      integer i/1/
-      integer j/1/
-      integer aux
-
-		do while (j<tam-1)
-
-			do while (i <tam - (j+1))
-
-				if (v(i)>v(i+1))
-					aux = v(i+1)
-					v(i+1)=v(i)
-					v(i)=aux
-				end if
-
-			i = i +1
-			end do
-
-   			j=j+1
-		end do
-
-	return
-    end subroutine InsertionSort
-
-	
-C-----------------------------------------------------------------------
-      subroutine ExibeVetor(v, tam)
-      implicit none
-
-      integer i/1/
-		do while (i<101)
-   			write(*,*)sorted(i)
-   			i = i + 1
-		end do
-
-	return
-    end subroutine ExibeVetor
-
-C-----------------------------------------------------------------------
+END FUNCTION
