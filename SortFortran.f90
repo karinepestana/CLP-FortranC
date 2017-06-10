@@ -5,73 +5,63 @@ PROGRAM sort
 
    IMPLICIT NONE !Todas as variáveis terão seus tipos definidos de modo explicito obrigatoriamente
 
-   !REAL, EXTERNAL :: insertionsort !Função que faz a ordenação
-
-   !INTEGER sorted(100)
    REAL aux
-   INTEGER, DIMENSION(100) :: sorted
-   INTEGER i, n, m, j
-   i = 0
-   n = 0
-   m = 1000
+   INTEGER :: sorted(100)
+   INTEGER i, min, max, k
 
-   CALL RANDOM_SEED() !dúvidas em relação ao parametro passado
+   !define o range dos valores aleatórios
+   min = 0 
+   max = 1000
 
-   print *, "Chamou a semente e vai comecar o random"
+   CALL RANDOM_SEED()
 
-	DO WHILE(i < 100)
+	DO i=0, SIZE(sorted)-1
+      !função random só retorna valores entre [0,1]
       CALL RANDOM_NUMBER(aux)
-      j = n + FLOOR((m+1-n)*aux)
-      sorted(i)=j
-   	i = i + 1
+      !uso a formula abaixo para transformar os valores reais em inteiro com um range definido por mim
+      k = min + FLOOR((max+1-min)*aux) 
+      sorted(i)= k
 	END DO
 
-   print *, "Terminou de preencher o vetor"
-
 	CALL insertionsort(sorted, 100)
-
-   print *, "Terminou o insertion sort"
-
-	!CALL exibevetor(sorted, 100)
-
-   print *, "Terminou tudo"
+	CALL exibevetor(sorted, 100)
 
 END PROGRAM sort
 
-SUBROUTINE insertionsort(sorted, tam)
-   
+SUBROUTINE insertionsort(sorted, tam)   
    
    INTEGER, INTENT(IN) :: tam
-   INTEGER, INTENT(OUT), DIMENSION(tam) :: sorted
+   INTEGER, INTENT(OUT):: sorted(100)
    
-   INTEGER i, j, aux
+   INTEGER i, k, aux
    i = 0
-   j = 0
+   k = 0
    aux = 0
-  
 
-   print *, "oi"
+   !DO WHILE (j < (tam-1))
+      !DO WHILE (i < (tam-j+1))
+         !k = i +1
+         !IF(sorted(i) > sorted(k)) THEN
+            !aux = sorted(k)
+            !sorted(k) = sorted(i)
+            !sorted(i) = aux
+            !print *, "IF"
+            !print *, sorted(i)
+            !print *, sorted(k)
+         !END IF
+         !i = i+1
+      !END DO
+      !j = j +1
+   !END DO
 
-   DO WHILE (j < (tam-1))
-      DO WHILE (i < (tam-j+1))
-         IF(sorted(i) > sorted(i+1)) THEN
-            aux = sorted(i+1)
-            sorted(i+1) = sorted(i)
-            sorted(i) = aux
-            print *, aux
-         END IF
-         i = i+1
-      END DO
-      j = j +1
-   END DO
-
-   i=0
-   print *, "PRINTA"
-   DO WHILE (i<100)
-      print *, sorted(i)
-      i = i +1
-   END DO
-
+    DO i = 0, SIZE(sorted)-1
+       k = MINLOC(sorted(i:), 1) + i - 1
+       IF (sorted(i) > sorted(k)) THEN
+          aux = sorted(i)
+          sorted(i) = sorted(k)
+          sorted(k) = aux
+       END IF
+    END DO  
 
 END SUBROUTINE insertionsort
 
@@ -80,7 +70,7 @@ SUBROUTINE exibevetor(sorted, tam)
    IMPLICIT NONE
 
    INTEGER, INTENT(IN) :: tam
-   INTEGER, INTENT(IN), DIMENSION(tam) :: sorted
+   INTEGER, INTENT(IN) :: sorted(100)
    
    INTEGER :: i= 0
 

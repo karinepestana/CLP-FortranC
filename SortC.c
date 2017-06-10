@@ -18,7 +18,7 @@ int main(int argc, char **argv)
     ExibeVetor(sorted, TAM);
     return 0;
 }
- 
+
 void InsertionSort(int* v){
     int i, j, aux; 
     for (j = 0; j<TAM-1; j++){
