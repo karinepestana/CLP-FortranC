@@ -8,16 +8,17 @@ void ExibeVetor(int* vet, int n);
  
 int main(int argc, char **argv)
 {
-    int *sorted, i, *tam;
+    int *sorted, i, tam;
  
     sorted = malloc(sizeof(int)*TAM);
  
     for(i=0; i<TAM; i++){
         sorted[i] = rand()% 1000;
     }
+    ExibeVetor(sorted, TAM);
     printf("Vai ordenar o vetor\n");
-    *tam = 100;
-    sorted = insertionsort(sorted, tam);
+    tam = 100;
+    insertionsort(sorted, &tam);
     ExibeVetor(sorted, TAM);
     return 0;
 }

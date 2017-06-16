@@ -1,4 +1,4 @@
-FUNCTION insertionsort(sorted, tam)   
+SUBROUTINE insertionsort(sorted, tam)   
    
     INTEGER, INTENT(IN) :: tam
     INTEGER, DIMENSION(tam), INTENT(INOUT) :: sorted
@@ -20,4 +20,4 @@ FUNCTION insertionsort(sorted, tam)
        END IF
     END DO  
     
-END FUNCTION insertionsort
+END SUBROUTINE insertionsort
