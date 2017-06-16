@@ -1,16 +1,15 @@
-SUBROUTINE insertionsort(sorted, tam)   
+FUNCTION insertionsort(sorted, tam)   
    
-   INTEGER, INTENT(IN) :: tam
-   INTEGER, POINTER, DIMENSION(:), INTENT(INOUT) :: sorted
-   !INTEGER, INTENT(OUT):: sorted(100)
+    INTEGER, INTENT(IN) :: tam
+    INTEGER, DIMENSION(tam), INTENT(INOUT) :: sorted
+    !INTEGER, INTENT(OUT):: sorted(100)
    
-   INTEGER i, k, aux
-   i = 0
-   k = 0
-   aux = 0
+    INTEGER :: i, k, aux
+    i = 0
+    k = 0
+    aux = 0
 
-   print *, "Ordenando Fortran"
-
+    print *, "Ordenando Fortran"
 
     DO i = 0, SIZE(sorted)-1
        k = MINLOC(sorted(i:), 1) + i - 1
@@ -20,5 +19,5 @@ SUBROUTINE insertionsort(sorted, tam)
           sorted(k) = aux
        END IF
     END DO  
-
-END SUBROUTINE insertionsort
+    
+END FUNCTION insertionsort
