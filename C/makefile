@@ -1,11 +1,11 @@
 #C
 
-all: compila clean 
+all: compile clean 
 
-compila:
-	gcc -c SortC.c
-	gcc SortC.o -o SortC
-	./SortC
+compile:
+	@gcc -c SortC.c
+	@gcc SortC.o -o SortC
+	@./SortC
 clean:
-	rm -rf *.o
-	rm -rf SortC
+	@rm -rf *.o
+	@rm -rf SortC

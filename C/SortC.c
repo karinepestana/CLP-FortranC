@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 #define TAM 100
-void InsertionSort(int* v);
+void bubbleSort(int* v);
 void ExibeVetor(int* vet, int n);
  
 int main(int argc, char **argv)
@@ -14,12 +14,18 @@ int main(int argc, char **argv)
     for(i=0; i<TAM; i++){
         sorted[i] = rand()% 1000;
     }
-    InsertionSort(sorted);
+    printf("\n");
+    printf("Vetor antes de ser ordenado:\n");
     ExibeVetor(sorted, TAM);
+    
+    bubbleSort(sorted);
+    printf("Vetor depois de ser ordenado:\n");
+    ExibeVetor(sorted, TAM);
+    
     return 0;
 }
 
-void InsertionSort(int* v){
+void bubbleSort(int* v){
     int i, j, aux; 
     for (j = 0; j<TAM-1; j++){
         for (i = 0; i < TAM-(j + 1); i++){
@@ -37,4 +43,5 @@ void ExibeVetor(int* vet, int n){
     int i;
     for (i = 0; i < n; i++)
         printf("%d ", vet[i]);
+    printf("\n\n");
 }

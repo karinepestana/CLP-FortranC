@@ -9,8 +9,6 @@ SUBROUTINE insertionsort(sorted, tam)
     k = 0
     aux = 0
 
-    print *, "Ordenando Fortran"
-
     DO i = 0, SIZE(sorted)-1
        k = MINLOC(sorted(i:), 1) + i - 1
        IF (sorted(i) > sorted(k)) THEN

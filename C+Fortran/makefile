@@ -1,13 +1,13 @@
 #C com Fortran
 
-all: inicio clean 
+all: start clean 
 
-inicio:
-	gfortran -c insertionsortFortran.f90 -fno-underscoring 
-	gcc -c CeFortran.c 
-	gcc insertionsortFortran.o CeFortran.o -o codigoCcomFortran -lgfortran	
-	./codigoCcomFortran 
+start:
+	@gfortran -c insertionsortFortran.f90 -fno-underscoring 
+	@gcc -c CeFortran.c 
+	@gcc insertionsortFortran.o CeFortran.o -o codigoCcomFortran -lgfortran	
+	@./codigoCcomFortran 
 	
 clean:
-	rm -rf *.o
-	rm -rf codigoCcomFortran
+	@rm -rf *.o
+	@rm -rf codigoCcomFortran

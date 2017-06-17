@@ -22,8 +22,9 @@ PROGRAM sort
       k = min + FLOOR((max+1-min)*aux) 
       sorted(i)= k
 	END DO
-
+  
 	CALL insertionsort(sorted, 100)
+  print *, "Vetor depois de ordenar:"
 	CALL exibevetor(sorted, 100)
 
 END PROGRAM sort
@@ -72,11 +73,12 @@ SUBROUTINE exibevetor(sorted, tam)
    INTEGER, INTENT(IN) :: tam
    INTEGER, INTENT(IN) :: sorted(100)
    
-   INTEGER :: i= 0
+   INTEGER :: i= 1
 
-   DO WHILE (i<100)
-      print *, sorted(i)
+   DO WHILE (i<=100)
+      write (*,'(2x,I5)',advance="no"), sorted(i)
       i = i +1
    END DO
+   print *, ""
    
 END SUBROUTINE exibevetor 
