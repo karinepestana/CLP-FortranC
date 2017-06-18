@@ -15,9 +15,6 @@ int main(int argc, char **argv)
     for(i=0; i<TAM; i++){
         sorted[i] = rand()% 1000;
     }
-    printf("\n");
-    printf("Vetor antes de ser ordenado\n");
-    ExibeVetor(sorted, TAM);
    
     tam = 100;
     insertionsort(sorted, &tam);

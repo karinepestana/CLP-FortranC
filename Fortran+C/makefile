@@ -1,4 +1,3 @@
-#EDITAR MAKEFILEEEEE
 #C com Fortran
 
 

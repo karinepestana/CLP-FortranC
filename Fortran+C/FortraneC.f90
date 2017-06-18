@@ -1,4 +1,3 @@
-!Objetivo do exercício: Implementar o InsertSort
 
 PROGRAM sort 
 
